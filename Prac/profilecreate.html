@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+	<title>Sign In Form validateion</title>
+	<script src="angular.min.js"></script>
+
+	<script>
+	var l=angular.module('myApp',[])
+	l.controller('myCtrl',['$scope',function($scope){
+		$scope.fn=/^[a-zA-Z]+$/;
+		$scope.ln=/^[a-zA-Z]+$/;
+		$scope.ot=/^[a-zA-Z0-9]+$/;
+	}]);
+	 </script>
+
+	<style>
+	input.ng-invalid.ng-dirty{border: 2px solid red;}
+	input.ng-valid.ng-dirty{border: 2px solid green;}
+	#fm{
+		border: solid #449988; 
+		height: 450px;
+		width: 650px;
+	}
+	#aoi{
+		border: solid #ff99cc;
+		margin-top: -30px;
+		margin-left: 140px;
+		height: 200px;
+		width: 500px;
+	}
+	#aoi-left{
+		margin-top: 5px;
+		margin-left: 50px;
+	}
+	#aoi-right{
+		margin-top: -118px;
+		margin-left: 300px;
+	}
+	</style>
+</head>
+	<body>
+		<div id="fm">
+			<form name="form" ng-controller="myCtrl">
+			<center><label>Profile Creation</label></center><br/>
+
+			<label>First Name</label>
+				<input type="text" ng-model="user.firstname" required="required" ng-pattern="fn" placeholder="First Name"/> 
+			
+			<label>Last Name</label>
+				<input type="text" ng-model="user.lastname" required="required" ng-pattern="ln" placeholder="Last Name"/><br/><br/>
+			
+				<label>You are :</label>
+				<input type="checkbox" ng-model="cb.al" name="alumini" ng-true-value="Selected" ng-false-value="Not Selected" ng-change=""/>Alumini/Professor {{cb.al}}<br/>
+				&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+				<input type="checkbox" ng-model="new.teacher" name="newteacher" ng-true-value="" ng-false-value="" ng-change=""/>New Teacher<br/><br/>
+			
+				<label>Area of Intrest<br/>(Check all to apply)</label><br/>
+				<div id="aoi">
+					<div id="aoi-left">
+						<label>Grade :</label><br/>
+							<input t<input type="checkbox" ng-model="g.k2" name="k2" ng-true-value="" ng-false-value="" ng-change=""/>K-2<br/>
+							<input type="checkbox" ng-model="g.k3" name="k3" ng-true-value="" ng-false-value="" ng-change=""/>K-3<br/>
+							<input type="checkbox" ng-model="g.ms" name="middleschool" ng-true-value="" ng-false-value="" ng-change=""/>Middle School<br/>
+							<input type="checkbox" ng-model="g.hs" name="highschool" ng-true-value="" ng-false-value="" ng-change=""/>High School<br/>
+							<input type="checkbox" ng-model="g.other" name="other" ng-true-value="" ng-false-value="" ng-change=""/>Other
+							<input type="text" ng=model="g.other" name="other" required="" ng-pattern="ot" ><br/>
+					</div>
+					<div id="aoi-right">	
+						<label>Subject :</label><br/>
+						<input type="checkbox" ng-model="g.e" name="gedu" ng-true-value="" ng-false-value="" ng-change=""/>Genareal Education<br/>
+						<input type="checkbox" ng-model="m" name="math" ng-true-value="" ng-false-value="" ng-change=""/>Math<br/>
+						<input type="checkbox" ng-model="sc" name="science" ng-true-value="" ng-false-value="" ng-change=""/>Science<br/>
+						<input type="checkbox" ng-model="ela" name="al" ng-true-value="" ng-false-value="" ng-change=""/>ELA<br/>
+					</div>																				
+				</div>
+				<button ng-disabled="form.$invalid" >Create</button>
+		</form>
+		</div>
+	</body>
+</html>

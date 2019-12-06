@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+	<title>Sign In Form validateion</title>
+	<script src="angular.min.js"></script>
+
+	<script>
+	var l=angular.module('myApp',[])
+	l.controller('myCtrl',['$scope',function($scope){
+		$scope.un=/^[a-zA-Z0-9]+$/;
+		$scope.pw=/^[a-zA-Z0-9]+$/;
+	}]);
+	 </script>
+
+	<style>
+	input.ng-invalid.ng-dirty{border: 2px solid red;}
+	input.ng-valid.ng-dirty{border: 2px solid green;}
+	#fm{
+		border: solid #449988; 
+		height: 150px;
+		width: 250px;
+	}
+	</style>
+</head>
+	<body>
+		<div id="fm">
+			<form name="form" ng-controller="myCtrl">
+			<label>Sign In</label><br/>
+				<input type="text" ng-model="user.name" required="required" ng-pattern="un" placeholder="Username"><br/>
+				<input type="password"  ng-model="user.passowrd" required="required" ng-pattern="pw" placeholder="Password"><br/>
+				<button ng-disabled="form.$invalid" >Submit</button>
+		</form>
+		</div>
+	</body>
+</html>

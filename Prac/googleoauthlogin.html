@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Google Oauth Login </title>
+	<script src="angular.min.js"></script>
+	<script>
+		$scope.redirectTo = function (path) {
+			$window.location.href = path;
+        };
+	</script>
+</head>
+<body>
+<div id="signinButton">
+  <span class="g-signin"
+    data-scope="https://www.googleapis.com/auth/plus.login"
+    data-clientid="YOUR_CLIENT_ID"
+    data-redirecturi="postmessage"
+    data-accesstype="offline"
+    data-cookiepolicy="single_host_origin"
+    data-callback="signInCallback">
+  </span>
+</div>
+<div id="result"></div>
+ <ion-content>
+		<button ng-click="redirectTo('http://example.com:3000/auth/google')">OAuth</button>
+      </ion-content>
+</body>
+</html>

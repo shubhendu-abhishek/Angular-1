@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+	<title>Sign In form</title>
+			<script src="angular.min.js"></script>
+		
+		<script>
+			var l=angular.module('myApp',[])
+			l.controller('myCtrl',['$scope',function($scope){
+				$scope.un=/^[a-zA-Z0-9]+$/;
+				$scope.pw=/^[a-zA-Z0-9]+$/;
+			}]);
+		</script>
+		<style>
+			input.ng-invalid.ng-dirty{border: 2px solid red}
+			input.ng-valid.ng-dirty{border: 2px solid green}
+	</style>
+</head>
+<body>
+	<form name="frm" ng-controller="myCtrl">
+			<input 
+			type="text" 
+			name="username" 
+			ng-model="user.name" 
+			placeholder="Username"
+			ng-pattern="un"
+			required="required"
+			/>
+			<span ng-show="frm.username.$dirty && frm.username.$invalid">not valid username please enter valid username</span>
+			<br/>
+			
+			<input 
+			type="password" 
+			name="password" 
+			ng-model="user.password"
+			ng-pattern="pw" 
+			required="required"
+			placeholder="Password"/>
+			<span ng-show="frm.password.$dirty && frm.password.$invalid">Not a valid password</span><br/>
+			<button ng-disabled="frm.$invalid">Sign In</button>
+	</form>
+</body>
+</html>
